@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "frame": "field_center_m_rad",
+  "start": [
+    -1.45,
+    -0.9,
+    0
+  ],
+  "waypoints": [
+    [
+      -0.9,
+      -0.9
+    ],
+    [
+      -0.9,
+      -0.3
+    ]
+  ],
+  "timeout_s": 15.0,
+  "speed_mps": 0.3
+}

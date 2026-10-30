@@ -35,3 +35,12 @@ docs/_build
 docs/html
 docs/xml
 html
+# Local simulation environments and generated evidence
+.venv-sim/
+sim/.venv/
+sim/out/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.audit/
+!sim/override_sim/assets/cad/meshes/*.obj
