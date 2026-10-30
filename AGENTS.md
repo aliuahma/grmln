@@ -32,8 +32,14 @@
 - Keep public declarations and Doxygen comments aligned with implementation changes. Use the existing `lemlib` namespace, typed units, and hardware abstractions.
 - Preserve unit distinctions: lengths/time are quantities; `_cDeg` denotes compass angles while `_stDeg` denotes standard-position angles. `AngleRange` is a magnitude. Review `include/units/Angle.hpp` before changing angle arithmetic or conversions.
 - PID inputs are explicitly converted (e.g. meters and standard radians), and PID integration/differentiation use elapsed seconds. Do not import stable-version tuning constants or assume raw PROS motor command scales apply to these wrappers.
-- For code changes, build and inspect compilation/link output. CI packages the library through `LemLib/pros-build@v5.1.0`; there is no checked-in automated unit-test suite or simulator harness.
+- For code changes, build and inspect compilation/link output. CI packages the library through `LemLib/pros-build@v5.1.0`; the separate Python simulator has its own tests and does not validate PROS firmware.
 - Add focused regression checks for substantive math/control fixes where feasible. A passing cross-compile does not establish sensor correctness, motion accuracy, task safety, or competition behavior; state what still needs a V5 hardware test.
 - Uploading or running the current demo can move the robot during initialization. Keep build verification distinct from hardware execution, and verify the robot configuration and intended behavior before a hardware run.
 - For documentation changes requiring rendering, use the dependencies in `docs/requirements.txt`, then run `doxygen` and `make html` from `docs/`; report unavailable tooling or stale doc configuration rather than claiming a successful render.
 - Keep unrelated working-tree changes intact. Update this guide when project structure, dependency versions, or verified development commands change.
+
+## University field simulator
+- `sim/` is a separate MuJoCo Python package. Use uv for all Python package management. Run `uv sync --project sim --extra test`, then `uv run --project sim pytest -q`. Commit `sim/uv.lock` when dependencies change.
+- `sim/README.md` documents rendering, route experiments, physics verification videos, and optional CAD extraction. Runtime needs only packaged assets; original STEP files and generated videos stay outside git.
+- Preserve university match/skills distinctions, hollow object contacts, continuous toggle hinges, and loader slide travel. Collision masks deliberately separate cup-floor proxies from hollow cup-object contacts.
+- Physical coefficients and the example robot are uncalibrated. Do not describe passing simulated checks as hardware validation or LemLib controller parity.
