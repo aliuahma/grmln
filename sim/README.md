@@ -84,3 +84,5 @@ uv run --project sim python sim/tools/extract_cad.py '/Users/ali/Downloads/276-9
 The extractor tessellates reusable definitions rather than every occurrence. It omits fastener visuals, records local and accumulated transforms, and verifies the common tile-top height. Visual decimation uses a fixed sampling seed and bounded sampled deviation. That sampled bound is not a formal maximum surface-error guarantee. `profiles.json` records radial cross-sections for inspection; the smallest radius can include fastening ribs and does not prove a circular opening.
 
 The Python scene generator owns field assembly and collision approximations. `route.py` owns the hypothetical robot and route follower. `scene.py` owns stepping and output. `verification.py` owns physical experiments. Keep the PROS library and its build independent of this package.
+
+See [performance checks](PERFORMANCE.md) for measured route-loop improvements and the sleeping configurations rejected by fidelity checks.

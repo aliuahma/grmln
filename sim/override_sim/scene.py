@@ -71,6 +71,10 @@ def run_route(layout, route, output, *, video=True, timestep=.002):
         bodies = [model.body(int(model.geom_bodyid[g])).name for g in (contact.geom1, contact.geom2)]
         if any(name.startswith('robot') for name in bodies) and contact.dist < -.003:
             raise ValueError(f'Robot start overlaps field geometry by {-contact.dist:.4f} m; choose a clear start')
+    body_names = tuple(mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, int(body)) or 'world'
+                       for body in model.geom_bodyid)
+    robot_geoms = np.array([name.startswith('robot') for name in body_names])
+    game_geoms = np.array([name.startswith(('pin_', 'cup_', 'toggle_', 'loader_')) for name in body_names])
     follower = RouteFollower(route)
     records = []
     renderer = mujoco.Renderer(model, 720, 960) if video else None
@@ -88,10 +92,12 @@ def run_route(layout, route, output, *, video=True, timestep=.002):
                     break
             mujoco.mj_step(model, data)
             check_state(model, data)
-            for contact in data.contact:
-                names = [mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, int(model.geom_bodyid[g])) or 'world' for g in (contact.geom1, contact.geom2)]
-                if any(name.startswith('robot') for name in names) and any(name.startswith(('pin_', 'cup_', 'toggle_', 'loader_')) for name in names):
-                    collisions.add(tuple(sorted(names)))
+            contact_geoms = data.contact.geom
+            first, second = contact_geoms[:, 0], contact_geoms[:, 1]
+            interactions = ((robot_geoms[first] & game_geoms[second]) |
+                            (robot_geoms[second] & game_geoms[first]))
+            for first_geom, second_geom in contact_geoms[interactions]:
+                collisions.add(tuple(sorted((body_names[first_geom], body_names[second_geom]))))
             if writer and data.time >= next_frame:
                 writer.append_data(frame(renderer, data)); next_frame += 1 / 30
         result = {**follower.report(), 'layout': Layout(layout).value, 'simulation_seconds': float(data.time),
