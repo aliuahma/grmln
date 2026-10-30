@@ -1,0 +1,791 @@
+{
+  "schema_version": 1,
+  "purpose": "Display meshes only; source mass and contact meshes remain authoritative",
+  "generator": "uv run --project sim --extra cad python sim/tools/generate_robot_visuals.py",
+  "error_scope": "512 deterministic area-weighted samples in each direction; not a Hausdorff bound. Unperforated profiles intentionally fill mounting holes. Motor hulls fill recesses.",
+  "instanced_source_triangles": 4599529,
+  "instanced_simple_triangles": 458353,
+  "definitions": {
+    "0:1:1:3": {
+      "mesh": "meshes/simple/0-1-1-3.obj",
+      "source_mesh": "meshes/PLA_-_32T_Wheel_Gear_0-1-1-3.obj",
+      "source_sha256": "ad11bd151ba0538fbc40bd57ec68436df85107a96ed6d20345a82472680d533d",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 6000,
+      "simple_triangles": 542,
+      "source_bounds_m": [
+        [
+          -0.0269258192,
+          -0.0269258192,
+          -0.00476253041
+        ],
+        [
+          0.0269245487,
+          0.0269245487,
+          0.0079375
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0269258192,
+          -0.0269258192,
+          -0.00476253041
+        ],
+        [
+          0.0269245487,
+          0.0269245487,
+          0.0079375
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0063349806763615835,
+        "simple_to_source_max_m": 0.0047674081327528026,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:7": {
+      "mesh": "meshes/simple/0-1-1-7.obj",
+      "source_mesh": "meshes/2_75_Omni_Antistatic_0-1-1-7.obj",
+      "source_sha256": "75048f94d89cb2379c5d3af7c18ac84b205fdcbaab0f464cb694054d5e77bd1d",
+      "method": "Decimated source hub plus 18 barrels sampled from CAD roller profiles",
+      "source_triangles": 383999,
+      "simple_triangles": 19186,
+      "source_bounds_m": [
+        [
+          -0.0349480632,
+          -0.0349820986,
+          -0.0126640297
+        ],
+        [
+          0.0349769449,
+          0.0348935003,
+          0.0124127572
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0349480632,
+          -0.03495230273688441,
+          -0.012400020000000074
+        ],
+        [
+          0.0349769449,
+          0.0348935003,
+          0.012400020000000114
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.004144547982081824,
+        "simple_to_source_max_m": 0.0012240883217685336,
+        "bounds_max_abs_m": 0.00026400969999992516
+      }
+    },
+    "0:1:1:13": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_C_1x2x1x25_0-1-1-13.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:14 visual"
+    },
+    "0:1:1:14": {
+      "mesh": "meshes/simple/0-1-1-14.obj",
+      "source_mesh": "meshes/Alu_C_1x2x1x25_0-1-1-14.obj",
+      "source_sha256": "d7d3d7d6760012317207d6d511ac2a2c97ca396cda69035f6a28e8a3f1627ce0",
+      "method": "Unperforated open U profile",
+      "source_triangles": 24000,
+      "simple_triangles": 36,
+      "source_bounds_m": [
+        [
+          -0.0127,
+          -3.14175959e-19,
+          -0.3175
+        ],
+        [
+          0.0127,
+          0.0142875,
+          9.70312682e-17
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0127,
+          -2.168404344971009e-19,
+          -0.3175
+        ],
+        [
+          0.0127,
+          0.0142875,
+          9.70312682e-17
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0007916474609907047,
+        "simple_to_source_max_m": 0.0019419731080448333,
+        "bounds_max_abs_m": 9.73355245028991e-20
+      }
+    },
+    "0:1:1:15": {
+      "mesh": "meshes/simple/0-1-1-15.obj",
+      "source_mesh": "meshes/V5_Motor_0-1-1-15.obj",
+      "source_sha256": "e930f38934b6386b6e6d06c555fde6e6ecab2246ded6484cdfa3e21d2e9858bc",
+      "method": "Rounded outer housing convex hull, small holes and recesses removed",
+      "source_triangles": 192000,
+      "simple_triangles": 894,
+      "source_bounds_m": [
+        [
+          -0.0286500253,
+          -0.0165000253,
+          -0.02745
+        ],
+        [
+          0.0286500253,
+          0.0165000253,
+          0.0449
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0286500253,
+          -0.0165000253,
+          -0.02745
+        ],
+        [
+          0.0286500253,
+          0.0165000253,
+          0.0449
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.015974857910523152,
+        "simple_to_source_max_m": 0.006338342493166147,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:24": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_Angle_1x1x6_0-1-1-24.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:25 visual"
+    },
+    "0:1:1:25": {
+      "mesh": "meshes/simple/0-1-1-25.obj",
+      "source_mesh": "meshes/Alu_Angle_1x1x6_0-1-1-25.obj",
+      "source_sha256": "0e836c029797fd08eb20be90192e9f36b46b256a9697b3cee827ae5bc7974767",
+      "method": "Unperforated open L profile",
+      "source_triangles": 2672,
+      "simple_triangles": 24,
+      "source_bounds_m": [
+        [
+          -0.00635,
+          -1.77635684e-17,
+          -0.0762
+        ],
+        [
+          0.00635,
+          0.0127,
+          3.4828048e-17
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.00635,
+          -1.77635684e-17,
+          -0.0762
+        ],
+        [
+          0.00635,
+          0.0127,
+          3.4828048e-17
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0007916474609907052,
+        "simple_to_source_max_m": 0.001991085277262758,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:35": {
+      "mesh": "meshes/simple/0-1-1-35.obj",
+      "source_mesh": "meshes/PLA_-_24T_Motor_Gear_0-1-1-35.obj",
+      "source_sha256": "c25c7f6807a884ce90d15475a0c74e0ada3a078bc99194df9d416ec0bfe1c2bb",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 3000,
+      "simple_triangles": 318,
+      "source_bounds_m": [
+        [
+          -0.0209096573,
+          -0.0209096573,
+          -0.00476250541
+        ],
+        [
+          0.0209092839,
+          0.0209096573,
+          0.00317514743
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0209096573,
+          -0.0209096573,
+          -0.00476250541
+        ],
+        [
+          0.0209092839,
+          0.0209096573,
+          0.00317514743
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0036953966811267194,
+        "simple_to_source_max_m": 0.0020492870938099523,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:43": {
+      "mesh": "meshes/simple/0-1-1-43.obj",
+      "source_mesh": "meshes/6P_16T_Sprocket_0-1-1-43.obj",
+      "source_sha256": "3df6cd4d39102b5bfa11d84bd9731d7e4ca46096a3fd914854d04d71352a14f5",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 12000,
+      "simple_triangles": 488,
+      "source_bounds_m": [
+        [
+          -0.0177646883,
+          -0.0178424938,
+          -0.00660154541
+        ],
+        [
+          0.0179734862,
+          0.0178584225,
+          0.00665645196
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0177646883,
+          -0.0178424938,
+          -0.00660154541
+        ],
+        [
+          0.0179734862,
+          0.0178584225,
+          0.00665645196
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.006411766583371372,
+        "simple_to_source_max_m": 0.0032894288198019716,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:56": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_C_1x2x1x19_0-1-1-56.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:57 visual"
+    },
+    "0:1:1:57": {
+      "mesh": "meshes/simple/0-1-1-57.obj",
+      "source_mesh": "meshes/Alu_C_1x2x1x19_0-1-1-57.obj",
+      "source_sha256": "34b93477b798ad25621b1360dd18b11d0d0d1b3ff3f9a05ec06085625218d463",
+      "method": "Unperforated open U profile",
+      "source_triangles": 19588,
+      "simple_triangles": 36,
+      "source_bounds_m": [
+        [
+          -0.0127,
+          -2.77555756e-19,
+          -0.2413
+        ],
+        [
+          0.0127,
+          0.0142875,
+          9.71452619e-17
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0127,
+          -2.168404344971009e-19,
+          -0.2413
+        ],
+        [
+          0.0127,
+          0.0142875,
+          9.71452619e-17
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0007575109651177508,
+        "simple_to_source_max_m": 0.00197016242019361,
+        "bounds_max_abs_m": 6.071532150289914e-20
+      }
+    },
+    "0:1:1:59": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_C_1x2x1x17_0-1-1-59.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:60 visual"
+    },
+    "0:1:1:60": {
+      "mesh": "meshes/simple/0-1-1-60.obj",
+      "source_mesh": "meshes/Alu_C_1x2x1x17_0-1-1-60.obj",
+      "source_sha256": "6f8593753e98e2efc5fb009e8e033663332bea346fcfe34527daf681489f653c",
+      "method": "Unperforated open U profile",
+      "source_triangles": 17628,
+      "simple_triangles": 36,
+      "source_bounds_m": [
+        [
+          -0.0127,
+          -2.77555756e-19,
+          -0.2159
+        ],
+        [
+          0.0127,
+          0.0142875,
+          9.72036934e-17
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0127,
+          -2.168404344971009e-19,
+          -0.2159
+        ],
+        [
+          0.0127,
+          0.0142875,
+          9.72036934e-17
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0007812809411442863,
+        "simple_to_source_max_m": 0.0020163160870346683,
+        "bounds_max_abs_m": 6.071532150289914e-20
+      }
+    },
+    "0:1:1:65": {
+      "mesh": "meshes/simple/0-1-1-65.obj",
+      "source_mesh": "meshes/V5_Motor_No_Cap_0-1-1-65.obj",
+      "source_sha256": "8a0a4c688e12dfd7cb27a1962888b7f72c1ce4da927dd22e49fd6ce89ebcb630",
+      "method": "Rounded outer housing convex hull, small holes and recesses removed",
+      "source_triangles": 96000,
+      "simple_triangles": 400,
+      "source_bounds_m": [
+        [
+          -0.02865,
+          -0.0165,
+          -0.02745
+        ],
+        [
+          0.02865,
+          0.0165,
+          0.032500047
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0285766015,
+          -0.0165,
+          -0.02745
+        ],
+        [
+          0.02865,
+          0.0164266019,
+          0.032500047
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.01585594882236114,
+        "simple_to_source_max_m": 0.006400536736872055,
+        "bounds_max_abs_m": 7.339849999999856e-05
+      }
+    },
+    "0:1:1:73": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_C_1x2x1x7_0-1-1-73.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:74 visual"
+    },
+    "0:1:1:74": {
+      "mesh": "meshes/simple/0-1-1-74.obj",
+      "source_mesh": "meshes/Alu_C_1x2x1x7_0-1-1-74.obj",
+      "source_sha256": "bb90f232d08eed37bf8072f3d96bac0cef24504d3c5a0bf3d50632142f524002",
+      "method": "Unperforated open U profile",
+      "source_triangles": 7268,
+      "simple_triangles": 36,
+      "source_bounds_m": [
+        [
+          -0.0127,
+          -3.33066907e-17,
+          -0.0889
+        ],
+        [
+          0.0127,
+          0.0142875,
+          1.15723071e-16
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0127,
+          -3.33066907e-17,
+          -0.0889
+        ],
+        [
+          0.0127,
+          0.0142875,
+          1.1102230246251565e-16
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.000787326710592055,
+        "simple_to_source_max_m": 0.0021148455559783143,
+        "bounds_max_abs_m": 4.70076853748434e-18
+      }
+    },
+    "0:1:1:86": {
+      "mesh": "meshes/simple/0-1-1-86.obj",
+      "source_mesh": "meshes/HS_12T_Gear_No_Insert_0-1-1-86.obj",
+      "source_sha256": "654e95bfa22aa4c92409b0cff674cef06cbcb4af3f39bddab62fc8c6a42d48e8",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 3000,
+      "simple_triangles": 534,
+      "source_bounds_m": [
+        [
+          -0.007167829,
+          -0.007167829,
+          -0.00646881341
+        ],
+        [
+          0.00717753694,
+          0.007167829,
+          0.00642157283
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.007167829,
+          -0.007167829,
+          -0.00646881341
+        ],
+        [
+          0.00717753694,
+          0.007167829,
+          0.00642157283
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0039000221598093437,
+        "simple_to_source_max_m": 0.003082502629499895,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:90": {
+      "mesh": "meshes/simple/0-1-1-90.obj",
+      "source_mesh": "meshes/HS_84T_Gear_No_Insert_HalfCut_0-1-1-90.obj",
+      "source_sha256": "e11e42ac40c04f1b83467455489efc0130abb7236ff278f4253fb8b0a4da3359",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 48000,
+      "simple_triangles": 680,
+      "source_bounds_m": [
+        [
+          -0.0454903839,
+          -0.0091,
+          -0.0064499809
+        ],
+        [
+          0.0454903839,
+          0.0454903839,
+          0.00646941267
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0454903839,
+          -0.0091,
+          -0.0064499809
+        ],
+        [
+          0.0454903839,
+          0.0454903839,
+          0.00646941267
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.006432080599653686,
+        "simple_to_source_max_m": 0.005388021649925939,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:99": {
+      "mesh": "meshes/simple/0-1-1-99.obj",
+      "source_mesh": "meshes/2_000_40A_500_0-1-1-99.obj",
+      "source_sha256": "f34628bfa2f0ac04fb741cca382b89cc1f2fe7d10573c479eb8e8582090df2c8",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 1464,
+      "simple_triangles": 164,
+      "source_bounds_m": [
+        [
+          -0.0253289764,
+          0.00635,
+          -0.0254
+        ],
+        [
+          0.0253289764,
+          0.01905,
+          0.0254
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0253289764,
+          0.00635,
+          -0.0254
+        ],
+        [
+          0.0253289764,
+          0.01905,
+          0.0254
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.006327378324723675,
+        "simple_to_source_max_m": 0.005406332523245997,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:103": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_Angle_1x1x14_0-1-1-103.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:104 visual"
+    },
+    "0:1:1:104": {
+      "mesh": "meshes/simple/0-1-1-104.obj",
+      "source_mesh": "meshes/Alu_Angle_1x1x14_0-1-1-104.obj",
+      "source_sha256": "9fec0050867ca0c09e340dcf8c5dc8082124b07bd4b870a9cd14fdb66d001d6f",
+      "method": "Unperforated open L profile",
+      "source_triangles": 6000,
+      "simple_triangles": 24,
+      "source_bounds_m": [
+        [
+          -0.00635,
+          -8.8817842e-17,
+          -0.1778
+        ],
+        [
+          0.00635,
+          0.0127,
+          2.46887482e-17
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.00635,
+          -8.8817842e-17,
+          -0.1778
+        ],
+        [
+          0.00635,
+          0.0127,
+          2.46887482e-17
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0007256531348744118,
+        "simple_to_source_max_m": 0.0021308008555063667,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:108": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_Angle_1x1x11_0-1-1-108.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:109 visual"
+    },
+    "0:1:1:109": {
+      "mesh": "meshes/simple/0-1-1-109.obj",
+      "source_mesh": "meshes/Alu_Angle_1x1x11_0-1-1-109.obj",
+      "source_sha256": "4b09e66c71c4394662e986e0d659edb63148a6e521362a1d09668e47d979da5b",
+      "method": "Unperforated open L profile",
+      "source_triangles": 4828,
+      "simple_triangles": 24,
+      "source_bounds_m": [
+        [
+          -0.00635,
+          -6.21724894e-17,
+          -0.1397
+        ],
+        [
+          0.00635,
+          0.0127,
+          3.02945249e-17
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.00635,
+          -6.21724894e-17,
+          -0.1397
+        ],
+        [
+          0.00635,
+          0.0127,
+          2.7755575615628914e-17
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0007803910571497516,
+        "simple_to_source_max_m": 0.0018404737928228178,
+        "bounds_max_abs_m": 2.5389492843710847e-18
+      }
+    },
+    "0:1:1:111": {
+      "mesh": null,
+      "source_mesh": "meshes/Alu_Angle_1x1x13_0-1-1-111.obj",
+      "reason": "Hole walls omitted with unperforated 0:1:1:112 visual"
+    },
+    "0:1:1:112": {
+      "mesh": "meshes/simple/0-1-1-112.obj",
+      "source_mesh": "meshes/Alu_Angle_1x1x13_0-1-1-112.obj",
+      "source_sha256": "1c917a3ef3e578c4ac1550ad59dc8f94ad4ba65022276e8a915d0c99bd270ced",
+      "method": "Unperforated open L profile",
+      "source_triangles": 5612,
+      "simple_triangles": 24,
+      "source_bounds_m": [
+        [
+          -0.00635,
+          -7.88258347e-17,
+          -0.1651
+        ],
+        [
+          0.00635,
+          0.0127,
+          2.61046734e-17
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.00635,
+          -7.88258347e-17,
+          -0.1651
+        ],
+        [
+          0.00635,
+          0.0127,
+          2.61046734e-17
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.0007803909394315376,
+        "simple_to_source_max_m": 0.0021447512385165167,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:141": {
+      "mesh": "meshes/simple/0-1-1-141.obj",
+      "source_mesh": "meshes/6P_8T_Sprocket_0-1-1-141.obj",
+      "source_sha256": "c16c25667d6899b93f3a75dfb8767435608b51c207bae879cfc21b3e5c8feb4a",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 3000,
+      "simple_triangles": 586,
+      "source_bounds_m": [
+        [
+          -0.00993974904,
+          -0.00993974904,
+          -0.00639183997
+        ],
+        [
+          0.00993974904,
+          0.00993974904,
+          0.00639097971
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.00993974904,
+          -0.00993974904,
+          -0.00639183997
+        ],
+        [
+          0.00993974904,
+          0.00993974904,
+          0.00639097971
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.005816373908816739,
+        "simple_to_source_max_m": 0.0028937681785603155,
+        "bounds_max_abs_m": 0.0
+      }
+    },
+    "0:1:1:148": {
+      "mesh": "meshes/simple/0-1-1-148.obj",
+      "source_mesh": "meshes/Urethane_-_Custom_2in_Flexwheel_0-1-1-148.obj",
+      "source_sha256": "5a7717a34d3db7ae6c25a368539aea89d4f173462fd7f074eae247fd938f4907",
+      "method": "Convex outer outline, bores and small surface detail removed",
+      "source_triangles": 1320,
+      "simple_triangles": 164,
+      "source_bounds_m": [
+        [
+          -0.0254,
+          0.0,
+          -0.0253289764
+        ],
+        [
+          0.0254,
+          0.0127,
+          0.0253289764
+        ]
+      ],
+      "simple_bounds_m": [
+        [
+          -0.0254,
+          0.0,
+          -0.0253289764
+        ],
+        [
+          0.0254,
+          0.0127,
+          0.0253289764
+        ]
+      ],
+      "sampled_surface_error": {
+        "sample_count_each_direction": 512,
+        "seed": 0,
+        "source_to_simple_max_m": 0.006325067603789389,
+        "simple_to_source_max_m": 0.005214007533072124,
+        "bounds_max_abs_m": 0.0
+      }
+    }
+  }
+}

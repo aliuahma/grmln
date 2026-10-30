@@ -39,8 +39,12 @@ html
 .venv-sim/
 sim/.venv/
 sim/out/
+sim/build/
+MUJOCO_LOG.TXT
 __pycache__/
 .pytest_cache/
 *.egg-info/
 .audit/
 !sim/override_sim/assets/cad/meshes/*.obj
+!sim/override_sim/assets/robot/meshes/*.obj
+!sim/override_sim/assets/robot/meshes/simple/*.obj

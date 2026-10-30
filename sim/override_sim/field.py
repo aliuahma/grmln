@@ -74,6 +74,7 @@ class FieldBuilder:
         self.actuator = ET.SubElement(self.root, 'actuator')
         self.mesh_ids = {}
         self.proxy_ids = {}
+        self.piece_contacts = json.loads((ASSETS / 'piece_contacts.json').read_text())
         self.placements = []
         for key, definition in self.definitions.items():
             if definition.get('mesh') and definition['semantic'] != 'foam_tile':
@@ -155,7 +156,8 @@ class FieldBuilder:
         ring_pose = self.world_transform(ring)
         for _, leaf in self.leaves(node_id):
             self.display(self.world, leaf, np.eye(4), color(node['name']))
-        self.ring(self.world, 'goal', 0, .0825, .018, .039, .07125, .051, ring_pose)
+        for index, vertices in enumerate(self.piece_contacts['goal']['pieces']):
+            self.convex(self.world, ('goal_cad', index), vertices, ring_pose)
         stand = ring_pose[2, 3]
         if stand > .001:
             ET.SubElement(self.world, 'geom', **{'class': 'collision'}, type='cylinder',
@@ -173,16 +175,16 @@ class FieldBuilder:
             self.display(body, leaf, pose)
             local = np.linalg.inv(pose) @ self.world_transform(leaf)
             if kind == 'cup':
-                self.ring(body, 'cup', .00275, .085, .038, .0175, .0401, .0195, local)
+                for index, vertices in enumerate(self.piece_contacts['cup']['pieces']):
+                    self.convex(body, ('cup_cad', index), vertices, local, masks=(2, 2))
                 floor_vertices = [[r * math.cos(t), h, r * math.sin(t)]
                                   for h, r in [(.00275, .0401), (.085, .0195)]
                                   for t in np.linspace(0, 2 * math.pi, 12, endpoint=False)]
                 self.convex(body, 'cup_floor', floor_vertices, local, masks=(4, 1))
             else:
-                vertices = [[r * math.cos(t), h, r * math.sin(t)]
-                            for h, r in [(0, .034), (.0825, .016)]
-                            for t in np.linspace(0, 2 * math.pi, 12, endpoint=False)]
-                self.convex(body, 'pin_half', vertices, local)
+                # Partitioned CAD hulls retain shoulder relief and hollow tips.
+                for index, vertices in enumerate(self.piece_contacts['pin']['pieces']):
+                    self.convex(body, ('pin_cad', index), vertices, local)
         self.placements.append({'kind': kind, 'source': node_id, 'name': node['name'],
                                 'position': pose[:3, 3].tolist(), 'rotation': pose[:3, :3].tolist()})
 
@@ -266,11 +268,15 @@ class FieldBuilder:
         if robot_start is not None:
             from .route import add_robot
             add_robot(self.world, self.actuator, robot_start)
+        from .loader_contacts import replace_loader_contacts
+        loader_contacts = replace_loader_contacts(self.root)
         metadata = {'layout': self.layout.value, 'frame': 'field_center_m_rad', 'cad_to_field': CAD_TO_FIELD.tolist(),
                     'source': self.manifest['source'], 'placements': self.placements,
+                    'loader_contacts': loader_contacts,
                     'assumptions': ['Unmeasured masses, inertias, friction and damping.',
-                                    'Simplified contact proxies preserve openings but omit molded ribs.',
+                                    'Game-piece CAD hull partitions preserve openings and shoulder relief while approximating curvature.',
                                     'Loader servo models human input; lowered sleeve bottom normalized to floor.',
+                                    'CAD-derived loader walls retain cutouts; the slide joint owns sleeve/guide bearing contact.',
                                     'Toggle friction approximates seating; no calibrated detent.',
                                     'No official scoring, GPS texture, robot CAD or PROS controller parity.']}
         return SceneSpec(ET.tostring(self.root, encoding='unicode'), metadata)

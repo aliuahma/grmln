@@ -4,6 +4,8 @@ Run route experiments on separate VEX U match and skills fields in MuJoCo. Geome
 
 This is a field and contact sandbox with an example differential-drive robot. It does not execute PROS firmware or the LemLib controller. Masses, inertia, friction, damping, and drive response need physical calibration before route timing predicts your robot.
 
+The separate [GRMLN KISS V2 robot](ROBOT.md) uses the supplied robot CAD, articulated lift and claw, omni rollers, and passive wall-toggle arms. Its mechanism and driving videos have dedicated `robot-verify` and `robot-sequence` commands. Existing `run` routes still use the example robot.
+
 ## Run with uv
 
 From the repository root:
@@ -60,11 +62,11 @@ The source STEP uses millimeters, with Y vertical. The exporter converts to mete
 
 Fixed perimeter hardware becomes four wall colliders and one floor. Tile seams and tape are visual geometry. Fasteners do not receive separate bodies or collisions. Render meshes have collision masks disabled and contribute no mass.
 
-Cups have segmented hollow frusta for object contacts. Separate filled half-cones contact only the floor. This avoids redundant floor contacts while preserving the opening for pins and the waist for rolling. Pins use tapered convex halves. Goals use hollow segmented funnels and solid supports. Molded ribs, narrow slots, and exact rim details are omitted from contact geometry. Use the collision-overlay image to inspect this difference.
+Pins, cups, and goal openings use hollow convex partitions of the original STEP surfaces, tessellated at 0.025 mm linear tolerance. Display mesh reduction does not determine insertion clearances. Axial sections preserve flange relief, cup shoulders, and the inner throat instead of bridging them with one convex hull. Separate filled cup proxies contact only the floor. The pin partitions preserve the approximately 15-degree starting tilt of loose radial pins. Tests drop pins into cups and cups over pins, checking settled center spacing against the 85 mm CAD seating offset. Current nested-pin offsets differ by less than 1 mm; tessellation and convex approximation still limit precision. Goal insertion tests cover floor, short, and tall supports. Goals retain hollow openings and solid supports. Small concavities, narrow slots, and exact rim details are omitted from contact geometry. Use the collision-overlay image to inspect this difference.
 
-Four toggles use continuous hinges about the CAD bar axes. Their collision shape retains a triangular cross-section. Initial upper faces are yellow. Damping and breakaway friction are estimates; there is no calibrated three-position detent. The four loaders have vertical slide joints with 0.2185 m travel, derived from the 365 mm and 583.5 mm heights in the official loader drawing. Their sleeves have open lower passages and separate fixed guides. A force-limited position actuator represents a person lifting a loader. Initial sleeve bottoms are normalized to the floor because the STEP has different red and blue starting heights.
+Four toggles use continuous hinges about the CAD bar axes. Their collision shape retains a triangular cross-section. Initial upper faces are yellow. Damping and breakaway friction are estimates; there is no calibrated three-position detent. The four loaders have vertical slide joints with 0.2185 m travel, derived from the 365 mm and 583.5 mm heights in the official loader drawing. Their sleeves use CAD-derived wall panels that preserve the lower diagonal cutouts, side openings, and open rear face. Fixed guides retain contact with the robot and game pieces. Sleeve-to-guide contact is excluded because the slide joint already constrains that bearing motion. A force-limited position actuator represents a person lifting a loader. Initial sleeve bottoms are normalized to the floor because the STEP has different red and blue starting heights.
 
-The floor contact time constant is 0.004 seconds at a 0.002-second simulation step. Physical masses, contact coefficients, controller response, and material compliance are assumptions in `field.py` and `route.py`. No GPS-strip texture, official scoring, pin-half separation, robot manipulator, sensor noise, or odometry model is implemented.
+The floor contact time constant is 0.004 seconds at a 0.002-second simulation step. Articulated robot scenes use a 0.001-second step. Physical masses, contact coefficients, controller response, and material compliance are assumptions in `field.py` and `route.py`. No GPS-strip texture, official scoring, pin-half separation, sensor noise, or odometry model is implemented.
 
 ## Define a route
 
@@ -86,3 +88,7 @@ The extractor tessellates reusable definitions rather than every occurrence. It 
 The Python scene generator owns field assembly and collision approximations. `route.py` owns the hypothetical robot and route follower. `scene.py` owns stepping and output. `verification.py` owns physical experiments. Keep the PROS library and its build independent of this package.
 
 See [performance checks](PERFORMANCE.md) for measured route-loop improvements and the sleeping configurations rejected by fidelity checks.
+
+Regenerate functional contacts with `uv run --project sim --extra cad python sim/tools/extract_piece_contacts.py '/Users/ali/Downloads/276-9250-000 (2026-04-26).STEP'`. The extractor checks the source hash and records tessellation parameters in `assets/cad/piece_contacts.json`. Keep seating-depth and loose-pin tilt tests together when validating these contacts. Convex partitions must end at functional ledges; a hull spanning a ledge can block insertion even when its vertices lie on the original surface.
+
+The seating audit reduced the nested pin's rise above its CAD pose from 12.36 mm to 0.55 mm. Measured supporting contact points were within 0.30 mm of the unreduced cup surface. These are measurements for the tested resting configurations, not a global collision-error bound. The source assembly also has up to 0.317 mm of overlap between loose radial pins and adjacent cups. Tests retain those source poses and permit their small initial relaxation while separately checking floor penetration.

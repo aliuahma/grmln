@@ -23,4 +23,4 @@ include = ["override_sim*"]
 testpaths = ["tests"]
 
 [tool.setuptools.package-data]
-override_sim = ["assets/cad/*.json", "assets/cad/meshes/*.obj"]
+override_sim = ["assets/cad/*.json", "assets/cad/meshes/*.obj", "assets/robot/*.json", "assets/robot/meshes/*.obj", "assets/robot/meshes/simple/*.obj"]
