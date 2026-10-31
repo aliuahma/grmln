@@ -15,6 +15,14 @@ class RobotVisuals:
     def mesh_path(self, definition_key: str, original: str) -> Path | None:
         replacement = self.metadata.get('definitions', {}).get(definition_key)
         if replacement is None:
-            return self.assets_path / original
+            path = self.assets_path / original
+            if not path.is_file():
+                raise FileNotFoundError(
+                    f'Robot {self.mode} visual mesh is missing: {path}. '
+                    'Use visual_mode="simple" for packaged assets. To restore optional CAD visuals, '
+                    'run uv run --project sim --extra cad python sim/tools/extract_robot.py /path/to/robot.stp '
+                    'with the original KISS V2 STEP file; see sim/ROBOT.md.'
+                )
+            return path
         mesh = replacement['mesh']
         return self.assets_path / mesh if mesh else None
